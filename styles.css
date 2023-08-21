@@ -1,0 +1,54 @@
+button{
+    padding:5px;
+    font-size: 1.3rem;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 3px;
+
+}
+button:hover{
+    background-color: white;
+    border: 1px solid green;
+    color:green; 
+}
+.books{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,300px));
+    gap:20px;
+}
+.books label{
+    display: inline-block;
+    width:100px;
+    color: grey;
+    text-align: end;
+    font-size: 1.5rem;
+}
+.books>div{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    
+}
+span{
+    font-size: 1.3rem;
+}
+dialog{
+    width: 400px;
+    height: 200px;
+    border: none;
+    box-shadow: #00000029 2px 2px 5px 0px;
+    border-radius: 10px;
+    padding: 20px;
+}
+dialog label{
+    display: inline-block;
+    width:70px;
+    text-align: end;
+    margin-right: 5px;
+    font-size: 1.3rem;
+}
+dialog div{
+    margin-bottom: 5px;
+}
