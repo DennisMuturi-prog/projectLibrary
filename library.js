@@ -5,60 +5,72 @@ const book={
     pages:0,
     status:true
 }
+let book0=Object.create(book);
 let book1=Object.create(book);
+book0.author='Reuben';
+book0.title='Ps5andPC';
+book0.pages=150;
+book0.status='unread';
+books.push(book0);
 book1.author='Dennis';
 book1.title='Kenya';
 book1.pages=190;
 book1.status='read';
 books.push(book1);
 const mydiv=document.querySelector('.books');
-const bookdiv=document.createElement('div');
-//bookdiv.textContent=books[0].title+' by '+books[0].author+' '+books[0].pages+' pages';
+let booksLen=0;
 for(let book of books){
+    const bookdiv=document.createElement('div');
     for(let x in book){
         const p=document.createElement('p');
         const label=document.createElement('label');  
         const span=document.createElement('span');
-        if(x=='status'){
-            span.setAttribute('class','status');
-        }
         p.appendChild(label);
         p.appendChild(span);
         label.textContent=x+':';
         span.textContent=book[x]; 
         bookdiv.appendChild(p);
     }
-}
-let i=books.length-1;
-i+='';
-const myButton=document.createElement('button');
+    let i='_'+booksLen;
+    booksLen++;
+    console.log(books.length);
+const removeButton=document.createElement('button');
 const readCheck=document.createElement('input');
 readCheck.setAttribute('type','checkbox');
-readCheck.checked=true;
-myButton.textContent='remove';
-myButton.setAttribute('data',i);
-bookdiv.appendChild(myButton);
+if(book.status=='read'){
+    readCheck.checked=true;
+}
+else{
+    readCheck.checked=false;
+}
+
+removeButton.textContent='remove';
+removeButton.setAttribute('data',i);
+bookdiv.appendChild(removeButton);
 bookdiv.appendChild(readCheck);
 bookdiv.setAttribute('id',i);
 mydiv.appendChild(bookdiv);
-myButton.addEventListener('click',function(){
-    let text=this.getAttribute('data');
-    const element=document.getElementById(text);
-    element.remove();
+removeButton.addEventListener('click',function(){
+    const confirmation=confirm('are you sure?');
+    if(confirmation){
+        let text=this.getAttribute('data');
+        const element=document.getElementById(text);
+        element.remove();
+    }
+   
 })
+const span1=document.querySelector('#'+i+'>p:nth-child(4)>span');
 readCheck.addEventListener('change',function(){
-    if(book1.status=='read'){
-        book1.status='unread';
-        const span1=document.querySelector('.status');
+    if(book.status=='read'){
+        book.status='unread'; 
         span1.textContent='unread';
     }
-    else if(book1.status=='unread'){
-        book1.status='read';
-        const span1=document.querySelector('.status');
+    else if(book.status=='unread'){
+        book.status='read';
         span1.textContent='read';
     }
 })
-
+}
 const addbutton=document.querySelector('#addbook');
 const mydialog=document.querySelector('dialog');
 addbutton.addEventListener('click',function(){
@@ -87,21 +99,13 @@ function addBook(){
         const newp=document.createElement('p');
         const newlabel=document.createElement('label');  
         const newspan=document.createElement('span');
-        let k=books.length-1;
-        k+='';
-        let l='_';
-        l+=k;
-        if(x=='status'){
-            newspan.setAttribute('class',l);
-        }
         newp.appendChild(newlabel);
         newp.appendChild(newspan);
         newlabel.textContent=x+':';
         newspan.textContent=book2[x]; 
         newbook.appendChild(newp);
     }
-    let j=books.length-1;
-    j+='';
+    let j='_'+(books.length-1);
     const newbutton=document.createElement('button');
     const newreadcheck=document.createElement('input');
     newreadcheck.setAttribute('type','checkbox');
@@ -123,11 +127,8 @@ function addBook(){
         }
        
     })
-    let y='_';
-    y+=j;
-    const span3=document.querySelector('.'+y);
+    const span3=document.querySelector('#'+j+'>p:nth-child(4)>span');
     newreadcheck.addEventListener('change',function(){
-        console.log(book2.status);
         if(book2.status=='read'){
             book2.status='unread';
             span3.textContent='unread';
