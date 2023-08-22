@@ -28,8 +28,7 @@ function createBook(librarybook){
             span.textContent=librarybook[x]; 
             bookdiv.appendChild(p);
         }
-        let i='_'+(books.length-1);
-        console.log(books.length);
+        let i='_'+(books.indexOf(librarybook));
     const removeButton=document.createElement('button');
     const readCheck=document.createElement('input');
     readCheck.setAttribute('type','checkbox');
@@ -69,9 +68,10 @@ function createBook(librarybook){
     
 }
  books.push(book0);
- createBook(book0);
  books.push(book1);
- createBook(book1);
+ for(let book of books){
+    createBook(book);
+ }
 
 const addbutton=document.querySelector('#addbook');
 const mydialog=document.querySelector('dialog');
