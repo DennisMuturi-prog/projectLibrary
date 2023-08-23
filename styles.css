@@ -60,7 +60,7 @@ dialog div{
     margin-bottom: 5px;
 }
 button[data]{
-    background-color: rgb(206, 14, 14);
+    background-color: rgb(175, 16, 16);
     color: white;
     position: relative;
     left: 200px;
