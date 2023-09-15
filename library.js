@@ -1,20 +1,14 @@
 const books=[];
-const book={
-    author:'example',
-    title:'example',
-    pages:0,
-    status:true
+class Book{
+    constructor(author,title,pages,status){
+        this.author=author;
+        this.title=title;
+        this.pages=pages;
+        this.status=status;
+    }
 }
-let book0=Object.create(book);
-let book1=Object.create(book);
-book0.author='Reuben';
-book0.title='Ps5andPC';
-book0.pages=150;
-book0.status='unread';
-book1.author='Dennis';
-book1.title='Kenya';
-book1.pages=190;
-book1.status='read';
+let book0=new Book('Reuben','Ps5andPC',150,'unread');
+let book1=new Book('Dennis','Kenya',190,'read');
 const mydiv=document.querySelector('.books');
 function createBook(librarybook){
         const bookdiv=document.createElement('div');
@@ -85,7 +79,7 @@ const pagesinput=document.querySelector('#pages');
 const readinput=document.querySelector('#read');
 const form=document.querySelector('form');
 function addBook(){
-    const book2=Object.create(book);
+    const book2=new Book();
     book2.author=authorinput.value;
     book2.title=titleinput.value;
     book2.pages=pagesinput.value;
